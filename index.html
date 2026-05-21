@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sancher Dairies | Pure Harvest from Uasin Gishu</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FFFFFF;
+      color: #1E2A2F;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* static header (not fixed) */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo-placeholder {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #2C5F2D, #97BC62);
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+    .logo-text h1 {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2C5F2D 20%, #D4AF37 80%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo-text span {
+      font-size: 0.7rem;
+      color: #6C7A6E;
+      letter-spacing: 0.3px;
+      font-weight: 500;
+      display: block;
+    }
+
+    .nav-links a {
+      color: #2A3B2C;
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #D68C2C;
+    }
+
+    /* hero — background image, text directly on top (no white bg) */
+    .hero {
+      min-height: 90vh;
+      background: linear-gradient(115deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 100%), url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=2071&auto=format');
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      align-items: center;
+    }
+    .hero-content {
+      max-width: 720px;
+      margin: 0 8%;
+      padding: 1.5rem;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(125deg, #FFFFFF, #FFEFC0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: none;
+    }
+    .hero-tagline {
+      font-size: 1.2rem;
+      margin: 1rem 0 1.8rem;
+      font-weight: 500;
+      color: #FFF8E7;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255,215,130,0.5);
+      color: #FFF5E0;
+    }
+    .stat i {
+      margin-right: 6px;
+      color: #F9B81B;
+    }
+    .btn-farm-modern {
+      display: inline-block;
+      background: #D68C2C;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      margin-top: 1.8rem;
+      cursor: default;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+    .btn-farm-modern i {
+      margin-right: 6px;
+    }
+
+    /* sections */
+    section {
+      padding: 5rem 6%;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 2rem;
+      color: #1F3B2C;
+      letter-spacing: -0.3px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 55px;
+      height: 4px;
+      background: #D68C2C;
+      border-radius: 4px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      transition: all 0.25s ease;
+      border: 1px solid #F0EFEA;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.12);
+    }
+    .card-img {
+      height: 210px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1.6rem;
+    }
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #263F2C;
+    }
+    .badge {
+      background: #F5F0E0;
+      color: #B46F1E;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* stats bar */
+    .stats-highlight {
+      background: #F9F7F1;
+      border-radius: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+      gap: 1rem;
+      text-align: center;
+    }
+    .stats-highlight .stat-cell {
+      flex: 1;
+    }
+    .stats-highlight .number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #D68C2C;
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    /* creative new sections */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: #FEFAF0;
+      border-radius: 32px;
+      padding: 1.8rem;
+      border-left: 6px solid #D68C2C;
+    }
+    .sustainability-badge {
+      background: #E6F2E3;
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gallery-modern {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery-modern img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 24px;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      border: 1px solid #E9E6DD;
+    }
+    .gallery-modern img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 18px 28px -8px rgba(0,0,0,0.15);
+    }
+
+    .vision-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+    }
+    .vision-pill {
+      background: #F2EFE6;
+      padding: 0.6rem 1.5rem;
+      border-radius: 80px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+    }
+    .vision-pill i {
+      color: #D68C2C;
+    }
+
+    .revenue-card-light {
+      background: #FCFAF5;
+      border-radius: 32px;
+      padding: 2rem;
+      margin: 2rem 0 0;
+      border-left: 6px solid #D68C2C;
+    }
+
+    .impact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: #2C5F2D10;
+      border-radius: 48px;
+      padding: 2rem;
+      margin-top: 2rem;
+      justify-content: space-between;
+    }
+    footer {
+      background: #121A13;
+      color: #D9D2B5;
+      padding: 3rem 6% 2rem;
+      border-top: 1px solid #2D412A;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .social-icons i {
+      font-size: 1.6rem;
+      margin-right: 1.2rem;
+      color: #D9C58B;
+      transition: 0.2s;
+    }
+    .social-icons i:hover {
+      color: #E9B551;
+    }
+
+    @media (max-width: 780px) {
+      .site-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav-links a {
+        margin: 0 0.8rem;
+      }
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+    hr {
+      margin: 1.5rem 0;
+      border-color: #2C3E2A;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">
+      <div class="logo-placeholder">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <div class="logo-text">
+        <h1>Sancher Dairies</h1>
+        <span>🌾 Uasin Gishu · Pure Origins</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">Story</a>
+      <a href="#operations">Farm</a>
+      <a href="#revenue">Harvest</a>
+      <a href="#gallery">Moments</a>
+      <a href="#impact">Impact</a>
+      <a href="#future">Horizon</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero with transparent overlay (no white bg) -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Where earth & golden milk meet</h1>
+        <div class="hero-tagline">Sancher Dairies — fresh raw milk, wild honey & regenerative heart. Rooted in Kenya's breadbasket.</div>
+        <div class="hero-stats">
+          <div class="stat"><i class="fas fa-tint"></i> 150 L/day</div>
+          <div class="stat"><i class="fas fa-paw"></i> 40 cows</div>
+          <div class="stat"><i class="fas fa-bug"></i> 10 hives</div>
+          <div class="stat"><i class="fas fa-map-marker-alt"></i> Uasin Gishu</div>
+        </div>
+        <div class="btn-farm-modern"><i class="fas fa-leaf"></i> From our family to yours</div>
+      </div>
+    </section>
+
+    <!-- About + Executive Summary -->
+    <section id="about" style="background: #FFFFFF;">
+      <div class="section-title">Rooted in heritage</div>
+      <div class="card-grid">
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/736x/7f/d2/68/7fd268ca56d2ce732f669a60597e5593.jpg" alt="cows in kenyan pasture">
+          <div class="card-content">
+            <div class="badge"><i class="fas fa-tree"></i> Mixed farming</div>
+            <h3>Executive snapshot</h3>
+            <p>Sancher Dairies is a vibrant mixed-farm in rural Uasin Gishu. With 40 cows (26 lactating, 14 heifers), 10 bee hives, and organic manure production, we deliver 150 liters of pure milk daily. Our honey is wild-crafted, our pastures thrive naturally.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/1200x/9a/9e/bd/9a9ebd49299f591aacab7dd7bc0a49a2.jpg" alt="honey harvest">
+          <div class="card-content">
+            <div class="badge"><i class="fas fa-eye"></i> Vision & Mission</div>
+            <h3>Our promise</h3>
+            <p><strong>Vision:</strong> To become the most trusted local brand for safe, high-quality dairy & honey.<br>
+            <strong>Mission:</strong> Deliver fresh, hygienic, affordable milk & honey to households and institutions across Uasin Gishu County & beyond.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2073&auto=format" alt="landscape kenya">
+          <div class="card-content">
+            <div class="badge"><i class="fas fa-location-dot"></i> Location</div>
+            <h3>Uasin Gishu heartland</h3>
+            <p>Rural neighborhood, cool breezes, fertile soils — ideal for dairy and apiculture. A sole proprietorship rooted in community values and sustainable agriculture.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operations / Assets -->
+    <section id="operations" style="background: #FDFBF6;">
+      <div class="section-title">Our living assets</div>
+      <div class="stats-highlight">
+        <div class="stat-cell"><span class="number">40</span><br>Total cattle</div>
+        <div class="stat-cell"><span class="number">26</span><br>Lactating cows</div>
+        <div class="stat-cell"><span class="number">14</span><br>Heifers</div>
+        <div class="stat-cell"><span class="number">10</span><br>Active hives</div>
+        <div class="stat-cell"><span class="number">∞</span><br>Manure → gold</div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/1200x/0f/6b/69/0f6b693eaa9a4658d5c160c1bfe05f0c.jpg" alt="beehives">
+          <div class="card-content">
+            <h3><i class="fas fa-honey-pot"></i> Bee apiary</h3>
+            <p>10 thriving hives produce ~200 kg of pure raw honey per year. Our bees forage on indigenous flora, creating rich, aromatic honey — processed on-site with modern honey equipment.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/1200x/42/55/54/425554217699b269b1b63f6bf6654cda.jpg" alt="manure compost">
+          <div class="card-content">
+            <h3><i class="fas fa-seedling"></i> Manure circular economy</h3>
+            <p>Organic manure from our zero-grazing unit enriches soil & provides extra revenue. Sustainable cycle: happy cows → rich compost → lush forage.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/1200x/68/b9/35/68b9359178f20564b7ac42225b1290bc.jpg" alt="dairy equipment">
+          <div class="card-content">
+            <h3><i class="fas fa-tractor"></i> Farm assets</h3>
+            <p>Land title, prime farmland, milking equipment, honey processing gear, and robust infrastructure — building the future of local dairy from the ground up.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Revenue Streams -->
+    <section id="revenue">
+      <div class="section-title">Harvest & revenue streams</div>
+      <div class="card-grid">
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/736x/b2/30/af/b230af0ae0760ed14f23f1c03d1f9eb6.jpg" alt="fresh milk pour">
+          <div class="card-content">
+            <h3>🥛 Daily fresh milk</h3>
+            <p><strong>150 liters/day</strong> · KES 60/liter = <strong>KES 9,000/day</strong><br>Sold locally to families & kiosks. Pure, unprocessed goodness from our 26 lactating cows.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/1200x/09/de/e0/09dee087bffa0282492598fa29cd7920.jpg" alt="honey jar">
+          <div class="card-content">
+            <h3>🍯 Golden honey</h3>
+            <p>~200 kg/year · KES 800/kg = <strong>KES 160,000/year</strong><br>Raw, unfiltered honey from 10 beehives, plus value-addition planned (jarring, labeling).</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/1200x/12/ad/a6/12ada6eb45b6112dba183526d8a18ab9.jpg" alt="organic manure">
+          <div class="card-content">
+            <h3>💚 Manure sales</h3>
+            <p><strong>KES 100,000/year</strong><br>Organic fertilizer nourishing farms across the region — turning waste into wealth and regenerating soils.</p>
+          </div>
+        </div>
+      </div>
+      <div class="revenue-card-light">
+        <p style="font-weight: 600; font-size: 1.2rem;"><i class="fas fa-chart-line"></i> Combined annual farm revenue (current): ~KES 3.5M+ from milk + honey + manure</p>
+        <p style="margin-top: 0.5rem;">⭐ Milk provides the daily heartbeat, honey & manure add diversity and resilience.</p>
+      </div>
+    </section>
+
+    <!-- Image Gallery (many images) -->
+    <section id="gallery" style="background: #FEFCF6;">
+      <div class="section-title">Moments from Sancher</div>
+      <div class="gallery-modern">
+        <img src="https://i.pinimg.com/1200x/b7/d3/6c/b7d36c21a80c1f067f5f73b1b3f36504.jpg" alt="close up cow">
+        <img src="https://i.pinimg.com/736x/c8/ac/c3/c8acc35467713dbb0f746de1378f793f.jpg" alt="beehives row">
+        <img src="https://i.pinimg.com/736x/65/21/c0/6521c05c369041906648e9a3425e6ad6.jpg" alt="dairy farm morning">
+        <img src="https://i.pinimg.com/1200x/54/e0/dd/54e0ddbfb2e97e72d0525e9ca9ce8875.jpg" alt="honey extraction">
+        <img src="https://i.pinimg.com/736x/fa/00/6b/fa006b5e2baa951ac982d6551e479f48.jpg" alt="kenyan farm cows">
+        <img src="https://i.pinimg.com/736x/a6/dd/90/a6dd90dcca0652ed146adb77ca44f715.jpg" alt="beekeeper">
+        <img src="https://i.pinimg.com/736x/a2/1e/8a/a21e8a142fae8397f9c75c6f70ad746b.jpg" alt="yogurt concept">
+        <img src="https://i.pinimg.com/736x/30/10/45/3010456dfee308358d875ccda77e9d79.jpg" alt="fresh milk glass">
+      </div>
+      <p style="text-align: center; margin-top: 1.5rem; color: #5F6C5E;"><i class="fas fa-camera"></i> From pasture to jar — authenticity in every frame.</p>
+    </section>
+
+    <!-- NEW: Community & Impact section (creative) -->
+    <section id="impact" style="background: linear-gradient(125deg, #F9F7F0, #FFFFFF);">
+      <div class="section-title">Beyond the farm: real impact</div>
+      <div class="impact-row">
+        <div style="flex:1">
+          <div class="sustainability-badge"><i class="fas fa-recycle"></i> Zero-waste loop</div>
+          <h3 style="margin: 1rem 0 0.5rem;">Regenerating our soils</h3>
+          <p>Our manure replaces synthetic fertilizers for local farmers, building healthier land and capturing carbon naturally.</p>
+        </div>
+        <div style="flex:1">
+          <div class="sustainability-badge"><i class="fas fa-hand-holding-heart"></i> Local livelihoods</div>
+          <h3 style="margin: 1rem 0 0.5rem;">Empowering community</h3>
+          <p>We employ local youth for milking, beekeeping, and distribution — building skills and strengthening rural economy.</p>
+        </div>
+        <div style="flex:1">
+          <div class="sustainability-badge"><i class="fas fa-water"></i> Water stewardship</div>
+          <h3 style="margin: 1rem 0 0.5rem;">Rainwater & conservation</h3>
+          <p>Our farm uses rainwater harvesting and efficient watering systems, reducing pressure on local springs.</p>
+        </div>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left" style="color:#D68C2C; font-size: 1.8rem;"></i>
+          <p style="margin-top: 0.8rem;">“The freshest milk I’ve ever tasted — and the honey is pure magic. Sancher is a blessing to our village.”</p>
+          <p style="margin-top: 1rem; font-weight: 600;">— Mary N., local customer</p>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left" style="color:#D68C2C; font-size: 1.8rem;"></i>
+          <p style="margin-top: 0.8rem;">“Their manure has transformed my vegetable garden. You can see the passion they put into everything.”</p>
+          <p style="margin-top: 1rem; font-weight: 600;">— James K., neighboring farmer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expansion / value-added future (no funding request) -->
+    <section id="future" style="background: linear-gradient(120deg, #FFFFFF 0%, #FEF7E8 100%);">
+      <div class="section-title">The value‑added horizon</div>
+      <p style="font-size: 1.1rem; max-width: 780px; margin-bottom: 1rem;">We are evolving beyond raw milk — moving into high-quality dairy processing and honey packaging to serve Uasin Gishu and beyond. Tradition meets innovation.</p>
+      <div class="vision-flex">
+        <div class="vision-pill"><i class="fas fa-fill-drip"></i> Pasteurized packaged milk</div>
+        <div class="vision-pill"><i class="fas fa-cheese"></i> Artisan cheese</div>
+        <div class="vision-pill"><i class="fas fa-blender"></i> Yoghurt & flavored milk</div>
+        <div class="vision-pill"><i class="fas fa-jar"></i> Branded honey jars</div>
+        <div class="vision-pill"><i class="fas fa-industry"></i> Mini pasteurization line</div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/736x/10/0c/57/100c57a530203f8b549573c1c5a00ab7.jpg" alt="packaged milk">
+          <div class="card-content">
+            <h3>🥛 Pasteurization & packaging</h3>
+            <p>Modern pasteurization and packing equipment will allow extended shelf-life, safe milk to institutions, schools, and retail outlets.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="https://i.pinimg.com/736x/81/40/b3/8140b32eeeac4abbdfb6638c2637adf9.jpg" alt="yogurt making">
+          <div class="card-content">
+            <h3>🧀 Yoghurt & cheese</h3>
+            <p>Fresh cultured products capturing the creaminess of our Ayrshire and Friesian herds. A small dairy processing unit on the farm.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="https://i.pinimg.com/1200x/14/48/04/144804d46e8bcc20b6f75ca0a8b6a9e3.jpg" alt="honey packaging">
+          <div class="card-content">
+            <h3>🐝 Honey branding</h3>
+            <p>From bulk raw honey to branded glass jars, labels that tell the story of our bees. Tapping into premium markets in Eldoret and beyond.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 2.5rem; background: #FCF6E3; border-radius: 48px; padding: 1.8rem; text-align: center;">
+        <i class="fas fa-seedling" style="font-size: 2rem; color:#C57F1E;"></i>
+        <p style="font-weight: 500; margin-top: 0.6rem;">"Expanding to value-added dairy and honey products while staying true to our roots — fresh, ethical, and local."</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3 style="color: #E2C28B;">Sancher Dairies</h3>
+        <p>Mixed farm · Dairy · Apiary<br>Rural neighborhood, Uasin Gishu County<br>Kenya</p>
+      </div>
+      <div>
+        <h3 style="color: #E2C28B;">Connect with us</h3>
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <p>📞 +254 7.....</p>
+        <p>✉️ .....</p>
+      </div>
+      <div>
+        <h3 style="color: #E2C28B;">Farm fresh</h3>
+        <p>Raw milk collection daily 6–9 AM<br>Honey available on pre-order<br>Manure deliveries weekly</p>
+      </div>
+    </div>
+    <hr>
+    <p style="text-align: center; font-size: 0.8rem;">© 2026 Sancher Dairies — Rooted in Uasin Gishu, growing with integrity.Developed by Quantum Solutions. 🐄🍯</p>
+  </footer>
+</body>
+</html>
