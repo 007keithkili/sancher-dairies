@@ -43,11 +43,25 @@
       background-clip: text; -webkit-background-clip: text; color: transparent;
     }
     .logo-text span { font-size: 0.7rem; color: #6C7A6E; display: block; }
+    /* desktop navigation */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
     .nav-links a {
-      color: #2A3B2C; margin-left: 2rem; text-decoration: none;
+      color: #2A3B2C; text-decoration: none;
       font-weight: 500; transition: 0.2s; font-size: 0.95rem;
     }
     .nav-links a:hover { color: #D68C2C; }
+    /* mobile toggle button (hidden on desktop) */
+    .mobile-toggle {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #2C5F2D;
+      cursor: pointer;
+    }
     /* hero */
     .hero {
       min-height: 90vh;
@@ -150,8 +164,20 @@
     .social-icons i { font-size: 1.6rem; margin-right: 1.2rem; color: #D9C58B; transition: 0.2s; }
     .social-icons i:hover { color: #E9B551; }
     @media (max-width: 780px) {
-      .site-header { flex-direction: column; text-align: center; }
-      .nav-links a { margin: 0 0.8rem; }
+      .site-header { flex-wrap: wrap; justify-content: space-between; }
+      .mobile-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 1rem 0;
+        border-top: 1px solid #eee;
+        margin-top: 0.5rem;
+        gap: 0.8rem;
+      }
+      .nav-links.show { display: flex; }
+      .nav-links a { margin: 0; text-align: center; }
       .hero-content h1 { font-size: 2.3rem; }
       .section-title { font-size: 1.8rem; }
     }
@@ -178,7 +204,8 @@
       <span>🌾 Uasin Gishu · Pure Origins</span>
     </div>
   </div>
-  <div class="nav-links">
+  <button class="mobile-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  <div class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="story.html">Story</a>
     <a href="products.html">Our Products</a>
@@ -561,5 +588,16 @@
   <hr>
   <p style="text-align: center; font-size: 0.8rem;">© 2026 Sancher Dairies — Rooted in Uasin Gishu, growing with integrity. Developed by Quantum Solutions. 🐄🍯</p>
 </footer>
+
+<script>
+  // Mobile menu toggle
+  const toggleBtn = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+</script>
 </body>
 </html>
