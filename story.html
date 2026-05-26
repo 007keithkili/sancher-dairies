@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sancher Dairies | Our Story — Heritage, Heart & Harvest</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FFFFFF;
+      color: #1E2A2F;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    /* header with mobile toggle */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+    }
+    .logo { display: flex; align-items: center; gap: 1rem; }
+    .logo-placeholder {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #2C5F2D, #97BC62);
+      border-radius: 60px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+    .logo-text h1 {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.9rem; font-weight: 800;
+      background: linear-gradient(135deg, #2C5F2D 20%, #D4AF37 80%);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .logo-text span { font-size: 0.7rem; color: #6C7A6E; display: block; }
+    /* desktop navigation */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #2A3B2C; text-decoration: none;
+      font-weight: 500; transition: 0.2s; font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: #D68C2C; }
+    /* mobile toggle button */
+    .mobile-toggle {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #2C5F2D;
+      cursor: pointer;
+    }
+    /* sections */
+    section { padding: 5rem 6%; }
+    .section-title {
+      font-size: 2.2rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 2rem; color: #1F3B2C; position: relative; display: inline-block;
+    }
+    .section-title:after {
+      content: ''; position: absolute; bottom: -12px; left: 0;
+      width: 55px; height: 4px; background: #D68C2C; border-radius: 4px;
+    }
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; margin-top: 2rem;
+    }
+    .card {
+      background: white; border-radius: 28px; overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      transition: all 0.25s ease; border: 1px solid #F0EFEA;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 24px 36px -12px rgba(0,0,0,0.12); }
+    .card-img { height: 220px; width: 100%; object-fit: cover; }
+    .card-content { padding: 1.6rem; }
+    .card-content h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: #263F2C; }
+    .badge {
+      background: #F5F0E0; color: #B46F1E; padding: 0.2rem 0.9rem;
+      border-radius: 40px; font-size: 0.75rem; font-weight: 600;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .story-quote {
+      background: #FEFAF0; border-radius: 48px; padding: 2.5rem;
+      margin: 2rem 0; text-align: center; font-style: italic;
+      font-size: 1.2rem; border-left: 6px solid #D68C2C;
+    }
+    footer {
+      background: #121A13; color: #D9D2B5; padding: 3rem 6% 2rem;
+      border-top: 1px solid #2D412A;
+    }
+    .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+    .social-icons i { font-size: 1.6rem; margin-right: 1.2rem; color: #D9C58B; transition: 0.2s; }
+    .social-icons i:hover { color: #E9B551; }
+    hr { margin: 1.5rem 0; border-color: #2C3E2A; }
+    /* mobile responsive */
+    @media (max-width: 780px) {
+      .site-header { flex-wrap: nowrap; }
+      .mobile-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 1rem 0;
+        border-top: 1px solid #eee;
+        margin-top: 1rem;
+        gap: 1rem;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .nav-links a {
+        margin: 0;
+        text-align: center;
+      }
+      .site-header { flex-wrap: wrap; }
+      .hero-content h1 { font-size: 2.3rem; }
+      .section-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-placeholder"><i class="fas fa-leaf"></i></div>
+    <div class="logo-text">
+      <h1>Sancher Dairies</h1>
+      <span>🌾 Uasin Gishu · Pure Origins</span>
+    </div>
+  </div>
+  <button class="mobile-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="story.html" style="color: #D68C2C; font-weight: 600;">Our Story</a>
+    <a href="index.html#products">Products</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#impact">Impact</a>
+    <a href="index.html#future">Horizon</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero for story page -->
+  <section style="background: linear-gradient(115deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 100%), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2073&auto=format'); background-size: cover; background-position: center 40%; min-height: 60vh; display: flex; align-items: center;">
+    <div class="hero-content" style="max-width: 720px; margin: 0 8%; padding: 1.5rem; color: white;">
+      <h1 style="font-size: 3.2rem; font-family: 'Space Grotesk', sans-serif;">Our story</h1>
+      <p style="font-size: 1.2rem; margin-top: 1rem;">Rooted in Uasin Gishu, grown with integrity — the journey of Sancher Dairies.</p>
+    </div>
+  </section>
+
+  <!-- The beginning -->
+  <section style="background: #FFFFFF;">
+    <div class="section-title">Where it began</div>
+    <div class="card-grid">
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/736x/7f/d2/68/7fd268ca56d2ce732f669a60597e5593.jpg" alt="early days farm">
+        <div class="card-content">
+          <h3>A family dream</h3>
+          <p>Sancher Dairies started as a small family farm with a handful of cattle and a few beehives. What drove us was a simple belief: that food should be fresh, honest, and grown without harm to the land. Over the years, we grew — not just in size, but in wisdom.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1587559070754-72e6a830fb98?q=80&w=2070&auto=format" alt="family at farm">
+        <div class="card-content">
+          <h3>Generations together</h3>
+          <p>Today, the farm is run by a dedicated team alongside family members. We have learned that the best farming comes from listening — to the animals, to the bees, to the soil. Every season teaches us something new.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1545247181-516773cae754?q=80&w=2070&auto=format" alt="compost">
+        <div class="card-content">
+          <h3>Closing the loop</h3>
+          <p>We realized early that waste is just a resource out of place. That's why manure became our gold — transforming cattle waste into rich compost for local farmers. Our farm now operates as a nearly closed system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The land & people -->
+  <section style="background: #FDFBF6;">
+    <div class="section-title">The land & the people</div>
+    <div class="card-grid">
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/1200x/0f/6b/69/0f6b693eaa9a4658d5c160c1bfe05f0c.jpg" alt="beekeeping team">
+        <div class="card-content">
+          <h3>Our beekeeping team</h3>
+          <p>Trained local youth manage our apiary with gentle, bee‑centric methods. They've learned modern beekeeping and now mentor others — creating a ripple of skills across the community.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/736x/fa/00/6b/fa006b5e2baa951ac982d6551e479f48.jpg" alt="cow care">
+        <div class="card-content">
+          <h3>Animal welfare first</h3>
+          <p>Our zero‑grazing system prioritizes cow comfort: soft bedding, clean water, fresh fodder, and regular health checks. Happy cows produce the best milk — that's our philosophy.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/736x/a6/dd/90/a6dd90dcca0652ed146adb77ca44f715.jpg" alt="farm workers">
+        <div class="card-content">
+          <h3>Fair & local employment</h3>
+          <p>We hire from the surrounding villages, offering fair wages and training. Many of our team members have grown with the farm, from casual workers to skilled herd managers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A deeper philosophy -->
+  <div class="story-quote">
+    <i class="fas fa-quote-left" style="font-size: 2rem; color: #D68C2C; margin-right: 0.8rem;"></i>
+    We don't farm to get rich overnight. We farm to leave the land better than we found it — for our children, and for theirs.
+  </div>
+
+  <!-- Challenges & growth -->
+  <section style="background: #FFFFFF;">
+    <div class="section-title">Challenges & growth</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-content">
+          <i class="fas fa-cloud-rain" style="font-size: 2rem; color: #D68C2C;"></i>
+          <h3 style="margin: 0.8rem 0;">Drought resilience</h3>
+          <p>We’ve weathered dry seasons by investing in rainwater harvesting, efficient irrigation, and drought‑tolerant forages. Every challenge made us smarter.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <i class="fas fa-chart-line" style="font-size: 2rem; color: #D68C2C;"></i>
+          <h3 style="margin: 0.8rem 0;">From raw milk to value</h3>
+          <p>We started selling only raw milk. But we saw the need for safer, packaged dairy. Today we are building toward pasteurization and branded honey — the next chapter.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <i class="fas fa-handshake" style="font-size: 2rem; color: #D68C2C;"></i>
+          <h3 style="margin: 0.8rem 0;">Community trust</h3>
+          <p>Over the years, we have earned a reputation for honesty and quality. Our customers know that when they buy from Sancher, they are supporting a farm that cares.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The road ahead -->
+  <section style="background: #FEFCF6;">
+    <div class="section-title">The road ahead</div>
+    <div class="card-grid">
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/736x/10/0c/57/100c57a530203f8b549573c1c5a00ab7.jpg" alt="packaging line">
+        <div class="card-content">
+          <h3>Modern dairy processing</h3>
+          <p>We are preparing to install a small pasteurization and packaging unit. This will allow us to serve schools, shops, and institutions with safe, long‑life milk.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/1200x/d2/e4/b6/d2e4b63b66f26b516cc4181bd6f0ced1.jpg" alt="honey branding">
+        <div class="card-content">
+          <h3>Branded honey</h3>
+          <p>Soon our honey will be available in elegant glass jars, telling the story of our bees and the wildflowers of Uasin Gishu. A product we are proud to put our name on.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/736x/81/40/b3/8140b32eeeac4abbdfb6638c2637adf9.jpg" alt="yogurt">
+        <div class="card-content">
+          <h3>Yoghurt & cheese</h3>
+          <p>In the coming years, we plan to launch fresh yoghurt and soft cheeses — turning our rich milk into even more delicious, nutritious products.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Invitation -->
+  <section style="background: linear-gradient(120deg, #FFFFFF, #FEF7E8); text-align: center;">
+    <div class="section-title" style="display: inline-block;">Visit us</div>
+    <p style="max-width: 700px; margin: 1.5rem auto 0;">You are always welcome at Sancher Dairies. Come see the cows, taste the honey, walk the land. We believe in transparency — our gate is open.</p>
+    <div style="margin-top: 2rem;">
+      <span class="btn-farm-modern" style="background: #D68C2C; display: inline-block; padding: 0.75rem 2rem; border-radius: 60px; color: white; font-weight: 700;"><i class="fas fa-map-marker-alt"></i> Get directions</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="color: #E2C28B;">Sancher Dairies</h3>
+      <p>Mixed farm · Dairy · Apiary<br>Rural neighborhood, Uasin Gishu County<br>Kenya</p>
+    </div>
+    <div>
+      <h3 style="color: #E2C28B;">Connect with us</h3>
+      <div class="social-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <p>📞 +254 7.....</p>
+      <p>✉️ hello@sancherdairies.ke</p>
+    </div>
+    <div>
+      <h3 style="color: #E2C28B;">Farm fresh</h3>
+      <p>Raw milk collection daily (morning & evening)<br>Honey available on pre-order<br>Manure deliveries weekly</p>
+    </div>
+  </div>
+  <hr>
+  <p style="text-align: center; font-size: 0.8rem;">© 2026 Sancher Dairies — Rooted in Uasin Gishu, growing with integrity. Developed by Quantum Solutions. 🐄🍯</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const toggleBtn = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+</script>
+</body>
+</html>
