@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sancher Dairies | Our Products — Fresh Milk · Raw Honey · Organic Manure</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FFFFFF;
+      color: #1E2A2F;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    /* header with mobile toggle */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+    }
+    .logo { display: flex; align-items: center; gap: 1rem; }
+    .logo-placeholder {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #2C5F2D, #97BC62);
+      border-radius: 60px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: white; box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+    .logo-text h1 {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.9rem; font-weight: 800;
+      background: linear-gradient(135deg, #2C5F2D 20%, #D4AF37 80%);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .logo-text span { font-size: 0.7rem; color: #6C7A6E; display: block; }
+    /* desktop navigation */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #2A3B2C; text-decoration: none;
+      font-weight: 500; transition: 0.2s; font-size: 0.95rem;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #D68C2C; }
+    /* mobile toggle button */
+    .mobile-toggle {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #2C5F2D;
+      cursor: pointer;
+    }
+    /* sections */
+    section { padding: 5rem 6%; }
+    .section-title {
+      font-size: 2.2rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 2rem; color: #1F3B2C; position: relative; display: inline-block;
+    }
+    .section-title:after {
+      content: ''; position: absolute; bottom: -12px; left: 0;
+      width: 55px; height: 4px; background: #D68C2C; border-radius: 4px;
+    }
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; margin-top: 2rem;
+    }
+    .product-card {
+      background: white; border-radius: 28px; overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+      transition: all 0.25s ease; border: 1px solid #F0EFEA;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 24px 36px -12px rgba(0,0,0,0.12); }
+    .product-img { height: 220px; width: 100%; object-fit: cover; }
+    .product-content { padding: 1.6rem; }
+    .product-content h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: #263F2C; }
+    .badge {
+      background: #F5F0E0; color: #B46F1E; padding: 0.2rem 0.9rem;
+      border-radius: 40px; font-size: 0.75rem; font-weight: 600;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .feature-icon { font-size: 2rem; color: #D68C2C; margin-bottom: 0.5rem; }
+    .highlight-row {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      background: #F9F7F1; border-radius: 48px; padding: 2rem;
+      margin-top: 2rem; justify-content: space-between;
+    }
+    footer {
+      background: #121A13; color: #D9D2B5; padding: 3rem 6% 2rem;
+      border-top: 1px solid #2D412A;
+    }
+    .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+    .social-icons i { font-size: 1.6rem; margin-right: 1.2rem; color: #D9C58B; transition: 0.2s; }
+    .social-icons i:hover { color: #E9B551; }
+    hr { margin: 1.5rem 0; border-color: #2C3E2A; }
+    /* mobile responsive */
+    @media (max-width: 780px) {
+      .site-header { flex-wrap: nowrap; }
+      .mobile-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 1rem 0;
+        border-top: 1px solid #eee;
+        margin-top: 1rem;
+        gap: 1rem;
+      }
+      .nav-links.show { display: flex; }
+      .nav-links a { margin: 0; text-align: center; }
+      .site-header { flex-wrap: wrap; }
+      .section-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-placeholder"><i class="fas fa-leaf"></i></div>
+    <div class="logo-text">
+      <h1>Sancher Dairies</h1>
+      <span>🌾 Uasin Gishu · Pure Origins</span>
+    </div>
+  </div>
+  <button class="mobile-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="story.html">Our Story</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#impact">Impact</a>
+    <a href="index.html#future">Horizon</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero section for products -->
+  <section style="background: linear-gradient(115deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 100%), url('https://images.unsplash.com/photo-1563636619-e9143da7973b?q=80&w=1974&auto=format'); background-size: cover; background-position: center 35%; min-height: 55vh; display: flex; align-items: center;">
+    <div style="max-width: 720px; margin: 0 8%; padding: 1.5rem; color: white;">
+      <h1 style="font-size: 3rem; font-family: 'Space Grotesk', sans-serif;">What we harvest</h1>
+      <p style="font-size: 1.2rem; margin-top: 1rem;">Pure, honest products from our family farm to your table.</p>
+    </div>
+  </section>
+
+  <!-- Current core products -->
+  <section style="background: #FFFFFF;">
+    <div class="section-title">Our daily harvest</div>
+    <div class="card-grid">
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1563636619-e9143da7973b?q=80&w=1974&auto=format" alt="fresh raw milk">
+        <div class="product-content">
+          <div class="badge"><i class="fas fa-tint"></i> Dairy</div>
+          <h3>Fresh raw milk</h3>
+          <p>Unpasteurized, unprocessed — just pure milk from our contented herd. Delivered daily within hours of milking. Naturally creamy and rich.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=2070&auto=format" alt="raw honey jar">
+        <div class="product-content">
+          <div class="badge"><i class="fas fa-bug"></i> Apiary</div>
+          <h3>Wildcrafted honey</h3>
+          <p>Raw, unfiltered honey from our own hives. The bees forage on indigenous trees and wildflowers — each batch has a unique, deep flavour.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1611240531108-27a4f3d5710d?q=80&w=2070&auto=format" alt="organic manure">
+        <div class="product-content">
+          <div class="badge"><i class="fas fa-seedling"></i> Soil health</div>
+          <h3>Organic manure</h3>
+          <p>100% natural compost from our zero‑grazing unit. Rich in nutrients, it regenerates soil, improves water retention, and boosts crop yields.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming value-added products -->
+  <section style="background: #FDFBF6;">
+    <div class="section-title">Coming soon — value added</div>
+    <div class="card-grid">
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1626802483021-5335c24d1cd6?q=80&w=1974&auto=format" alt="pasteurized milk bottles">
+        <div class="product-content">
+          <div class="badge"><i class="fas fa-fill-drip"></i> New</div>
+          <h3>Pasteurized milk</h3>
+          <p>Safe, extended‑shelf‑life milk in hygienic packaging. Perfect for schools, shops, and institutions. Coming with our new processing line.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1590086783191-a0694c7d1e6e?q=80&w=2070&auto=format" alt="yoghurt">
+        <div class="product-content">
+          <div class="badge"><i class="fas fa-blender"></i> Coming</div>
+          <h3>Yoghurt & cheese</h3>
+          <p>Fresh cultured products made from our rich milk. Creamy, natural, and full of probiotics. A small dairy processing unit is on the way.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1595263783621-4299c744e4d8?q=80&w=2070&auto=format" alt="branded honey jar">
+        <div class="product-content">
+          <div class="badge"><i class="fas fa-jar"></i> New</div>
+          <h3>Branded honey</h3>
+          <p>Elegant glass jars with our label — telling the story of our bees and the wildflowers of Uasin Gishu. Perfect gift or premium table honey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why our products stand out -->
+  <section style="background: #FFFFFF;">
+    <div class="section-title">Why choose Sancher?</div>
+    <div class="highlight-row">
+      <div style="flex:1; text-align: center;">
+        <i class="fas fa-certificate feature-icon"></i>
+        <h3 style="margin: 0.5rem 0;">No additives</h3>
+        <p>Our milk is never adulterated. Our honey is never heated or filtered. Pure as nature intended.</p>
+      </div>
+      <div style="flex:1; text-align: center;">
+        <i class="fas fa-tractor feature-icon"></i>
+        <h3 style="margin: 0.5rem 0;">Farm-fresh daily</h3>
+        <p>Milk is delivered within hours of milking. Honey is harvested and jarred in small batches.</p>
+      </div>
+      <div style="flex:1; text-align: center;">
+        <i class="fas fa-leaf feature-icon"></i>
+        <h3 style="margin: 0.5rem 0;">Regenerative</h3>
+        <p>Every product supports soil health, biodiversity, and a healthier planet. Your purchase gives back to the land.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to buy / availability -->
+  <section style="background: #FEFCF6;">
+    <div class="section-title">How to get our products</div>
+    <div class="card-grid">
+      <div class="product-card">
+        <div class="product-content" style="text-align: center;">
+          <i class="fas fa-store" style="font-size: 2.5rem; color: #D68C2C;"></i>
+          <h3 style="margin: 1rem 0;">Local pickup</h3>
+          <p>Visit the farm daily between 6–9 AM and 4–6 PM for fresh milk. Honey and manure available on pre‑order.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-content" style="text-align: center;">
+          <i class="fas fa-truck" style="font-size: 2.5rem; color: #D68C2C;"></i>
+          <h3 style="margin: 1rem 0;">Delivery nearby</h3>
+          <p>We deliver to households, kiosks, and schools within Uasin Gishu County. Contact us to arrange regular supply.</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-content" style="text-align: center;">
+          <i class="fas fa-hand-holding-usd" style="font-size: 2.5rem; color: #D68C2C;"></i>
+          <h3 style="margin: 1rem 0;">Bulk orders</h3>
+          <p>Restaurants, schools, and institutions — we offer competitive rates for regular bulk purchases. Ask for a quote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality assurance / transparency -->
+  <section style="background: linear-gradient(120deg, #FFFFFF, #FEF7E8); text-align: center;">
+    <div class="section-title" style="display: inline-block;">Pure from our hands to yours</div>
+    <p style="max-width: 700px; margin: 1.5rem auto 0;">We invite you to visit the farm, meet the cows, see the hives, and taste the difference. Transparency is our promise — no hidden processes, no shortcuts.</p>
+    <div style="margin-top: 2rem;">
+      <span class="btn-farm-modern" style="background: #D68C2C; display: inline-block; padding: 0.75rem 2rem; border-radius: 60px; color: white; font-weight: 700;"><i class="fas fa-calendar-alt"></i> Schedule a visit</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3 style="color: #E2C28B;">Sancher Dairies</h3>
+      <p>Mixed farm · Dairy · Apiary<br>Rural neighborhood, Uasin Gishu County<br>Kenya</p>
+    </div>
+    <div>
+      <h3 style="color: #E2C28B;">Connect with us</h3>
+      <div class="social-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <p>📞 +254 7.....</p>
+      <p>✉️ hello@sancherdairies.ke</p>
+    </div>
+    <div>
+      <h3 style="color: #E2C28B;">Farm fresh</h3>
+      <p>Raw milk collection daily (morning & evening)<br>Honey available on pre-order<br>Manure deliveries weekly</p>
+    </div>
+  </div>
+  <hr>
+  <p style="text-align: center; font-size: 0.8rem;">© 2026 Sancher Dairies — Rooted in Uasin Gishu, growing with integrity. Developed by Quantum Solutions. 🐄🍯</p>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const toggleBtn = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+</script>
+</body>
+</html>
